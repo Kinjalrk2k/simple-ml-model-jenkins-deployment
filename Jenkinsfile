@@ -43,12 +43,11 @@ pipeline {
         }
 
         stage('Deploy Model') {
-            steps {
+             steps {
                 sh '''
-                    mkdir -p deployed_models
-                    cp model/model.pkl deployed_models/
-                    echo "✅ Model deployed to 'deployed_models/' directory"
+                    echo "✅ Model is already saved in model/model.pkl"
                 '''
+                archiveArtifacts artifacts: 'model/model.pkl', fingerprint: true
             }
         }
     }
